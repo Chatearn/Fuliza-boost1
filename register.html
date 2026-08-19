@@ -1,1 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Fuliza Limit Increase</title>
+
+  <style>
+    :root {
+      --green: #00843D;
+      --green-dark: #006B32;
+      --green-light: #EAF7EF;
+      --black: #111111;
+      --text: #202824;
+      --muted: #68736D;
+      --border: #DCE4DF;
+      --background: #F5F8F6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      max-width: 1180px;
+      margin: auto;
+      padding: 17px 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background: var(--green);
+      color: white;
+
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .back {
+      color: var(--green);
+      text-decoration: none;
+
+      padding: 10px 15px;
+
+      border-radius: 7px;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .back:hover {
+      background: var(--green-light);
+    }
+
+    /* MAIN */
+
+    .page {
+      min-height: calc(100vh - 72px);
+
+      padding: 58px 20px 80px;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: auto;
+    }
+
+    /* INTRO */
+
+    .intro {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .intro h1 {
+      color: var(--black);
+
+      font-size: 44px;
+      line-height: 1.15;
+
+      font-weight: 800;
+      letter-spacing: -1.2px;
+
+      margin-bottom: 15px;
+    }
+
+    .intro h1 span {
+      color: var(--green);
+    }
+
+    .intro p {
+      max-width: 520px;
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+
+      line-height: 1.7;
+    }
+
+    /* FORM CARD */
+
+    .form-card {
+      background: #ffffff;
+
+      border: 1px solid var(--border);
+      border-radius: 17px;
+
+      padding: 36px;
+
+      box-shadow:
+        0 13px 38px rgba(0, 70, 35, 0.08);
+    }
+
+    .form-header {
+      margin-bottom: 29px;
+    }
+
+    .form-header h2 {
+      color: var(--black);
+
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      color: var(--muted);
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* PROGRESS */
+
+    .progress {
+      display: flex;
+      align-items: center;
+
+      margin-bottom: 30px;
+    }
+
+    .progress-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      color: var(--green);
+
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1px;
+
+      white-space: nowrap;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--green);
+      color: white;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .circle.inactive {
+      background: #DCE6E0;
+      color: #68736D;
+    }
+
+    .line {
+      height: 2px;
+      flex: 1;
+
+      margin: 0 12px;
+
+      background: #DCE6E0;
+    }
+
+    /* FORM */
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.1px;
+
+      margin-bottom: 9px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 55px;
+
+      padding: 0 16px;
+
+      background: #FCFDFC;
+
+      border: 1.5px solid #D5DED9;
+      border-radius: 9px;
+
+      color: var(--text);
+
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+
+      outline: none;
+
+      transition: 0.2s ease;
+    }
+
+    input::placeholder {
+      color: #9AA49F;
+      font-weight: 500;
+    }
+
+    input:focus,
+    select:focus {
+      background: #ffffff;
+
+      border-color: var(--green);
+
+      box-shadow:
+        0 0 0 3px rgba(0,132,61,0.08);
+    }
+
+    /* NOTICE */
+
+    .notice {
+      margin: 7px 0 24px;
+
+      padding: 15px;
+
+      background: #F5FAF7;
+
+      border: 1px solid #DCEBE1;
+      border-radius: 9px;
+
+      color: #4E6157;
+
+      font-size: 13px;
+      font-weight: 500;
+
+      line-height: 1.55;
+    }
+
+    /* BUTTON */
+
+    .submit-button {
+      width: 100%;
+      height: 56px;
+
+      border: none;
+      border-radius: 9px;
+
+      background: var(--green);
+      color: white;
+
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.1px;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+
+      box-shadow:
+        0 7px 18px rgba(0,132,61,0.18);
+    }
+
+    .submit-button:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .terms {
+      margin-top: 17px;
+
+      text-align: center;
+
+      color: #8A938E;
+
+      font-size: 11px;
+      font-weight: 500;
+
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--black);
+
+      color: #9CA49F;
+
+      padding: 27px 20px;
+
+      text-align: center;
+
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .navbar {
+        padding: 14px 16px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .logo-mark {
+        width: 35px;
+        height: 35px;
+
+        font-size: 17px;
+      }
+
+      .back {
+        padding: 8px 11px;
+        font-size: 13px;
+      }
+
+      .page {
+        padding: 42px 15px 60px;
+      }
+
+      .intro h1 {
+        font-size: 37px;
+      }
+
+      .intro p {
+        font-size: 15px;
+      }
+
+      .form-card {
+        padding: 27px 19px;
+        border-radius: 14px;
+      }
+
+      .form-header h2 {
+        font-size: 25px;
+      }
+
+      .progress-item {
+        font-size: 11px;
+      }
+
+      .line {
+        margin: 0 7px;
+      }
+
+      input,
+      select {
+        height: 53px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <nav class="navbar">
+
+      <div class="logo">
+
+        <div class="logo-mark">
+          F
+        </div>
+
+        Fuliza Limit
+
+      </div>
+
+      <a href="index.html" class="back">
+        ← Home
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main class="page">
+
+    <div class="container">
+
+      <section class="intro">
+
+        <h1>
+          Increase Your <span>Fuliza Limit</span>
+        </h1>
+
+        <p>
+          Complete the registration form below to begin
+          your limit increase application.
+        </p>
+
+      </section>
+
+
+      <section class="form-card">
+
+        <div class="form-header">
+
+          <h2>
+            Registration
+          </h2>
+
+          <p>
+            Please enter your details accurately.
+          </p>
+
+        </div>
+
+
+        <div class="progress">
+
+          <div class="progress-item">
+
+            <div class="circle">
+              1
+            </div>
+
+            Registration
+
+          </div>
+
+          <div class="line"></div>
+
+          <div class="progress-item">
+
+            <div class="circle inactive">
+              2
+            </div>
+
+            Application
+
+          </div>
+
+        </div>
+
+
+        <form action="dashboard.html" method="get">
+
+          <div class="form-group">
+
+            <label for="fullname">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="phone">
+              Phone Number
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="e.g. 0712 345 678"
+              autocomplete="tel"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="county">
+              County
+            </label>
+
+            <select
+              id="county"
+              name="county"
+              required
+            >
+
+              <option value="">
+                Select your county
+              </option>
+
+              <option>Nairobi</option>
+              <option>Mombasa</option>
+              <option>Kisumu</option>
+              <option>Nakuru</option>
+              <option>Kiambu</option>
+              <option>Machakos</option>
+              <option>Kajiado</option>
+              <option>Uasin Gishu</option>
+              <option>Other</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="notice">
+
+            For your security, never enter your
+            M-PESA PIN, OTP, or banking password
+            on this website.
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+            Continue to Application
+          </button>
+
+
+          <div class="terms">
+
+            By continuing, you confirm that the information
+            provided is accurate.
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Fuliza Limit. All rights reserved.
+
+  </footer>
+
+</body>
+</html>
